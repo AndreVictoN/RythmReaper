@@ -10,7 +10,6 @@ public class EnemyScript : MonoBehaviour
     public float duration = 0.15f;
     public bool movingToTarget = true;
     public GameObject player;
-
     private Tween _tween;
 
     void Start()
@@ -125,24 +124,32 @@ public class EnemyScript : MonoBehaviour
                 if(this.transform.position.x >= 3.41f)
                 {
                     Destroy(this.gameObject);
+
+                    collision.gameObject.GetComponent<PlayerScript>().AddPoints();
                 }
             }else if(this.gameObject.tag == "EnemyLeft")
             {
                 if(this.transform.position.x <= -3.41f)
                 {
                     Destroy(this.gameObject);
+
+                    collision.gameObject.GetComponent<PlayerScript>().AddPoints();
                 }
             }else if(this.gameObject.tag == "EnemyTop")
             {
                 if(this.transform.position.y >= 3.34f)
                 {
                     Destroy(this.gameObject);
+
+                    collision.gameObject.GetComponent<PlayerScript>().AddPoints();
                 }
             }else if(this.gameObject.tag == "EnemyDown")
             {
-                if(this.transform.position.y <= 3.34f)
+                if(this.transform.position.y <= -3.34f)
                 {
                     Destroy(this.gameObject);
+
+                    collision.gameObject.GetComponent<PlayerScript>().AddPoints();
                 }
             }
         }

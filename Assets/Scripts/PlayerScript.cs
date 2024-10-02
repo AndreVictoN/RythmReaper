@@ -13,6 +13,8 @@ public class PlayerScript : MonoBehaviour
 
     public Ease ease = Ease.InOutSine;
 
+    public GameManager gameManager;
+
     public bool isMoving = false;
 
     void Update()
@@ -56,5 +58,10 @@ public class PlayerScript : MonoBehaviour
         isMoving = true;
 
         tween = transform.DOMove(targetPosition, duration).SetEase(ease).OnComplete(() => isMoving = false);
+    }
+
+    public void AddPoints()
+    {
+        gameManager.UpdatePoints();
     }
 }
