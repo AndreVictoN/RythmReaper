@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core.Singleton;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public TextMeshProUGUI textPoints;
-    public int score = 0;
+    public SOInt soScore;
 
     void Start()
     {
@@ -15,14 +17,15 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        soScore.value = 0;
+        
         textPoints.text = "0";
-        score = 0;
     }
 
     public void UpdatePoints()
     {
-        score++;
+        soScore.value++;
 
-        textPoints.text = score.ToString();
+        textPoints.text = soScore.value.ToString();
     }
 }

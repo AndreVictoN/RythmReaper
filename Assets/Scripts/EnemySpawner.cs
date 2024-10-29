@@ -5,21 +5,22 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float time = 1;
+    //public float time = 1;
     public GameObject enemy;
 
-    public float countRight;
-    public float countLeft;
-    public float countUp;
-    public float countDown;
+    //public float countRight;
+    //public float countLeft;
+    //public float countUp;
+    //public float countDown;
 
-    void Update()
+    /*void Update()
     {
         newEnemy();
-    }
+    }*/
     
     public void newEnemy()
     {
+        Instantiate(enemy);
         /*if(!GameObject.Find("Enemy"))
         {
             count += Time.deltaTime;
@@ -32,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }*/
 
-        if(enemy.CompareTag("EnemyRight"))
+        /*if(enemy.CompareTag("EnemyRight"))
         {
             countRight += Time.deltaTime;
 
@@ -72,6 +73,6 @@ public class EnemySpawner : MonoBehaviour
 
                 countDown = 0;
             }
-        }
+        }*/
     }
 }

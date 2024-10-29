@@ -126,10 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef060da2a83fc7c4295ec7952a868e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.9
+  duration: 1
   movingToTarget: 1
   player: {fileID: 2375793308030943081, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-  gameManager: {fileID: 8588546020193717320, guid: 8dabc342277040b4890e887d1c94b1fa, type: 3}
 --- !u!61 &5037275797979613290
 BoxCollider2D:
   m_ObjectHideFlags: 0

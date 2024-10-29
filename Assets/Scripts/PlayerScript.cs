@@ -17,25 +17,34 @@ public class PlayerScript : MonoBehaviour
 
     public bool isMoving = false;
 
+    public float timer = 0f;
+
     void Update()
     {
         SetMove();
+
+        if(timer > 0f)
+        {
+            timer -= Time.deltaTime;
+        }
     }
 
     void SetMove()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if(Input.GetKeyDown(KeyCode.F))
         {
-            StartMove(new Vector3(0f, 3.53f, 0f));
+            StartMove(new Vector3(-7f, 2f, 0f));
         }
         else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
             StartMove(new Vector3(0f, -3.53f, 0f));
         }
-        else if(Input.GetKeyDown(KeyCode.RightArrow))
+        else if(Input.GetKeyDown(KeyCode.J) && timer <= 0)
         {
             //StartMove(new Vector3(7.19f, 0f, 0f));
-            StartMove(new Vector3(3.53f, 0f, 0f));
+            StartMove(new Vector3(-7f, 0f, 0f));
+
+            timer = 0.05f;
         }
         else if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -48,9 +57,8 @@ public class PlayerScript : MonoBehaviour
         }*/
         if(!isMoving && !tween.IsActive())
         {
-            transform.DOMove(new Vector3(0f, 0f, 0f), duration).SetEase(ease);
+            transform.DOMove(new Vector3(-9f, 0f, 0f), duration).SetEase(ease);
         }
-        
     }
 
     void StartMove(Vector3 targetPosition)
