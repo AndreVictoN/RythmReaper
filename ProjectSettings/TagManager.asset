@@ -8,6 +8,8 @@ TagManager:
   - EnemyLeft
   - EnemyTop
   - EnemyDown
+  - Song1
+  - target
   layers:
   - Default
   - TransparentFX

@@ -8,11 +8,18 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public TextMeshProUGUI textPoints;
+    public TextMeshProUGUI textLife;
     public SOInt soScore;
-
+    public PlayerScript player;
+    
     void Start()
     {
         ResetGame();
+    }
+
+    void Update()
+    {
+        textLife.text = player.life.ToString();
     }
 
     public void ResetGame()
@@ -20,6 +27,8 @@ public class GameManager : Singleton<GameManager>
         soScore.value = 0;
         
         textPoints.text = "0";
+
+        textLife.text = "10";
     }
 
     public void UpdatePoints()
