@@ -8,6 +8,7 @@ using Unity.VisualScripting.ReorderableList;
 public class EnemyScript : MonoBehaviour
 {
     public float duration = 0.15f;
+    public float timeToDestroy = 0.30f;
     public bool movingToTarget = true;
     public GameObject player;
     private Tween _tween;
@@ -29,7 +30,7 @@ public class EnemyScript : MonoBehaviour
             }
         }else if(this.gameObject.tag == "EnemyLeft")
         {
-            if(movingToTarget && Vector3.Distance(transform.position, new Vector3(-3.53f,0f,0f)) < 0.01f)
+            if(movingToTarget && Vector3.Distance(transform.position, new Vector3(-1.98f,0.7525349f,0f)) < 0.01f)
             {
                 movingToTarget = false;
 
@@ -53,9 +54,11 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        if(this.gameObject.transform.position == new Vector3(0f,0f,0f))
+        if(this.gameObject.transform.position == new Vector3(0f,0f,0f) || this.gameObject.transform.position == new Vector3(1.56f, 0.7525349f, 0f))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+
+            DestroyEnemy();
         }
     }
 
@@ -66,9 +69,11 @@ public class EnemyScript : MonoBehaviour
             _tween.Kill();
         }
 
-        if(player.activeSelf)
+        if(player.activeSelf && this.gameObject.tag != "EnemyLeft")
         {
             _tween = transform.DOMove(new Vector3(0f,0f,0f), duration / 2);
+        }else{
+            _tween = transform.DOMove(new Vector3(1.56f,0.7525349f,0f), duration / 2);
         }
 
         /*if(this.gameObject.CompareTag("EnemyRight"))
@@ -98,7 +103,7 @@ public class EnemyScript : MonoBehaviour
                 _tween.Kill();
             }
 
-            _tween = transform.DOMove(new Vector3(-3.53f, 0f, 0f), duration).OnKill(() => {movingToTarget = false;});
+            _tween = transform.DOMove(new Vector3(-1.98f, 0.7525349f, 0f), duration).OnKill(() => {movingToTarget = false;});
         }else if(tag == "EnemyTop")
         {
             if(_tween != null)
@@ -122,7 +127,7 @@ public class EnemyScript : MonoBehaviour
     {
         if(_tween != null)
         {
-        _tween.Kill();
+            _tween.Kill();
         }
     }
 
@@ -144,12 +149,12 @@ public class EnemyScript : MonoBehaviour
                 }
             }else if(this.gameObject.tag == "EnemyLeft")
             {
-                if(this.transform.position.x <= -3.41f)
+                if(this.transform.position.x <= -1.32f)
                 {
                     Destroy(this.gameObject);
 
                     collision.gameObject.GetComponent<PlayerScript>().AddPoints();
-                }else if(this.gameObject.transform.position.x > -3.41f)
+                }else if(this.gameObject.transform.position.x > -1.32f)
                 {
                     collision.gameObject.GetComponent<PlayerScript>().Damage();
                     Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
@@ -161,7 +166,7 @@ public class EnemyScript : MonoBehaviour
                     Destroy(this.gameObject);
 
                     collision.gameObject.GetComponent<PlayerScript>().AddPoints();
-                }else if(this.gameObject.transform.position.x < 3.41f)
+                }else if(this.gameObject.transform.position.y < 3.41f)
                 {
                     collision.gameObject.GetComponent<PlayerScript>().Damage();
                     Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
@@ -173,12 +178,29 @@ public class EnemyScript : MonoBehaviour
                     Destroy(this.gameObject);
 
                     collision.gameObject.GetComponent<PlayerScript>().AddPoints();
-                }else if(this.gameObject.transform.position.x < -3.41f)
+                }else if(this.gameObject.transform.position.y > -3.41f)
                 {
                     collision.gameObject.GetComponent<PlayerScript>().Damage();
                     Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
                 }
             }
         }
+
+        if(collision.gameObject.tag == "EnemyLeft" || collision.gameObject.tag == "EnemyRight" || collision.gameObject.tag == "EnemyDown" || collision.gameObject.tag == "EnemyTop")
+        {
+            Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
+        }
+    }
+
+    public void DestroyEnemy()
+    {
+        if(_tween != null)
+        {
+            _tween.Kill();
+        }
+        
+        //this.gameObject.GetComponent<Animator>().SetTrigger("Dying");
+
+        Destroy(this.gameObject/*, timeToDestroy*/);
     }
 }
