@@ -10,6 +10,7 @@ TagManager:
   - EnemyDown
   - Song1
   - target
+  - Song2
   layers:
   - Default
   - TransparentFX

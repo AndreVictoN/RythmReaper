@@ -13,10 +13,13 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private AudioSource backgroundMusic;
 
+    [SerializeField] private AudioSource backgroundMusic2;
+
     [SerializeField] private GameObject[] objectsToHide;
+    public int songNumber = 0;
 
     private EnemyScript[] enemies;
-    private bool isPaused = false;
+    public bool isPaused = false;
 
     void Start()
     {
@@ -51,8 +54,15 @@ public class PauseMenu : MonoBehaviour
         } 
         
         pauseMenuUI.SetActive(false); 
-        Time.timeScale = 1f;         
-        backgroundMusic.UnPause();   
+        Time.timeScale = 1f;
+
+        if(songNumber == 1)
+        {
+            backgroundMusic.UnPause();
+        }else if(songNumber == 2){
+            backgroundMusic2.UnPause();
+        }
+
         isPaused = false;
         audioPanel.SetActive(false);
     }
@@ -71,8 +81,16 @@ public class PauseMenu : MonoBehaviour
             enemy.gameObject.SetActive(false);
         }
         pauseMenuUI.SetActive(true); 
-        Time.timeScale = 0f;        
-        backgroundMusic.Pause();    
+        Time.timeScale = 0f;      
+
+        if(songNumber == 1)
+        {
+            backgroundMusic.Pause();   
+        }else if(songNumber == 2)
+        {
+            backgroundMusic2.Pause();
+        }
+
         isPaused = true;
     }
 

@@ -12,7 +12,7 @@ using UnityEngine.Events;
 
 public class SliderController : MonoBehaviour
 {
-        public Slider volumeSlider;
+    public Slider volumeSlider;
 
     void Start()
     {

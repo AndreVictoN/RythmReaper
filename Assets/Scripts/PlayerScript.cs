@@ -117,4 +117,9 @@ public class PlayerScript : MonoBehaviour
 
         this.gameObject.GetComponent<Animator>().SetTrigger("Damage");
     }
+
+    public void ResetLife()
+    {
+        life = 10;
+    }
 }
