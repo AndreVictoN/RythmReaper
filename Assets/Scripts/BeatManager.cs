@@ -79,6 +79,11 @@ public class BeatManager : Singleton<BeatManager>
             //Invoke("Song2", 2f);
             Song2();
         }
+
+        if(!_audioSource.isPlaying && !_song2.isPlaying)
+        {
+            isFinished = true;
+        }
     }
 
     private void Song1Load()
@@ -188,8 +193,6 @@ public class BeatManager : Singleton<BeatManager>
         {
             timer -= Time.deltaTime;
         }
-
-        isFinished = true;
     }
 }
 #endregion
