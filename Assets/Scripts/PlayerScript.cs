@@ -2,29 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using System;
-using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
     public float duration = 0.15f;
-
     public Tween tween;
-
     public Ease ease = Ease.InOutSine;
-
     public GameManager gameManager;
 
     public bool isMoving = false;
-
     public float timer = 0f;
 
     public int life = 10;
 
+    // Armazena as teclas mapeadas
+    private KeyCode upKey;
+    private KeyCode downKey;
+    private KeyCode rightKey;
+    private KeyCode leftKey;
+
     void Start()
     {
-        if(life != 10)
+        // Carrega as teclas salvas no PlayerPrefs ou usa valores padrão
+        upKey = LoadKey("UpKey", KeyCode.W);
+        downKey = LoadKey("DownKey", KeyCode.S);
+        rightKey = LoadKey("RightKey", KeyCode.D);
+        leftKey = LoadKey("LeftKey", KeyCode.A);
+
+        if (life != 10)
         {
             life = 10;
         }
@@ -34,63 +40,48 @@ public class PlayerScript : MonoBehaviour
     {
         SetMove();
 
-        if(timer > 0f)
+        if (timer > 0f)
         {
             timer -= Time.deltaTime;
         }
 
-        if(life == 0)
+        if (life == 0)
         {
             tween.Kill();
-
             Destroy(gameObject);
-
-            SceneManager.LoadScene(0);
         }
     }
 
     void SetMove()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow) && timer <= 0)
+        if (Input.GetKeyDown(upKey) && timer <= 0)
         {
             this.gameObject.GetComponent<Animator>().SetTrigger("Attack");
-
             StartMove(new Vector3(0f, 3.53f, 0f));
-
             timer = 0.05f;
         }
-        else if(Input.GetKeyDown(KeyCode.DownArrow) && timer <= 0)
+        else if (Input.GetKeyDown(downKey) && timer <= 0)
         {
             this.gameObject.GetComponent<Animator>().SetTrigger("Attack");
-
             StartMove(new Vector3(0f, -3.53f, 0f));
-
             timer = 0.05f;
         }
-        else if(Input.GetKeyDown(KeyCode.RightArrow) && timer <= 0)
+        else if (Input.GetKeyDown(rightKey) && timer <= 0)
         {
             this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
             this.gameObject.GetComponent<Animator>().SetTrigger("Attack");
-            //StartMove(new Vector3(7.19f, 0f, 0f));
             StartMove(new Vector3(3.53f, 0f, 0f));
-
             timer = 0.05f;
         }
-        else if(Input.GetKeyDown(KeyCode.LeftArrow) && timer <= 0)
+        else if (Input.GetKeyDown(leftKey) && timer <= 0)
         {
-
             this.gameObject.transform.localScale = new Vector3(-2.5f, 2.5f, 2.5f);
             this.gameObject.GetComponent<Animator>().SetTrigger("Attack");
-            //StartMove(new Vector3(-7.19f, 0f, 0f));
             StartMove(new Vector3(-3.53f, 0f, 0f));
-            
             timer = 0.05f;
         }
-        /*else
-        {
-            transform.DOMove(new Vector3(0f, 0f, 0f), duration).SetEase(ease);
-        }*/
-        if(!isMoving && !tween.IsActive() && this.gameObject.activeSelf)
+
+        if (!isMoving && !tween.IsActive() && this.gameObject.activeSelf)
         {
             transform.DOMove(new Vector3(0f, 0f, 0f), duration).SetEase(ease);
         }
@@ -98,10 +89,9 @@ public class PlayerScript : MonoBehaviour
 
     void StartMove(Vector3 targetPosition)
     {
-        if(this.gameObject.activeSelf)
+        if (this.gameObject.activeSelf)
         {
             isMoving = true;
-
             tween = transform.DOMove(targetPosition, duration).SetEase(ease).OnComplete(() => isMoving = false);
         }
     }
@@ -114,12 +104,26 @@ public class PlayerScript : MonoBehaviour
     public void Damage()
     {
         life -= 1;
-
         this.gameObject.GetComponent<Animator>().SetTrigger("Damage");
     }
 
     public void ResetLife()
     {
         life = 10;
+    }
+
+    /// <summary>
+    /// Carrega uma tecla do PlayerPrefs ou retorna o valor padrão se não existir.
+    /// </summary>
+    /// <param name="keyName">Nome da chave a ser carregada.</param>
+    /// <param name="defaultKey">Valor padrão caso não exista a chave.</param>
+    /// <returns>A tecla carregada.</returns>
+    private KeyCode LoadKey(string keyName, KeyCode defaultKey)
+    {
+        if (PlayerPrefs.HasKey(keyName))
+        {
+            return (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(keyName));
+        }
+        return defaultKey;
     }
 }
