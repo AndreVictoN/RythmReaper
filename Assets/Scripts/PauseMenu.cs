@@ -16,8 +16,8 @@ public class PauseMenu : MonoBehaviour
 
 
     [SerializeField] private GameObject[] objectsToHide;
-    public int songNumber = 0;
 
+    public int songNumber = 0;
 
     public bool isPaused = false;
 
@@ -42,9 +42,7 @@ public class PauseMenu : MonoBehaviour
         foreach (GameObject obj in objectsToHide)
         {
             obj.SetActive(true);
-        }  
-
-   
+        }
         
         pauseMenuUI.SetActive(false); 
         Time.timeScale = 1f;
@@ -64,7 +62,7 @@ public class PauseMenu : MonoBehaviour
         foreach (GameObject obj in objectsToHide)
         {
             obj.SetActive(false);
-        }  
+        }
 
         pauseMenuUI.SetActive(true); 
         Time.timeScale = 0f; // Pausa o jogo

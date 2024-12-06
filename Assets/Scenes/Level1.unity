@@ -4541,27 +4541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e4480dc50dfc24c8667ab761d9d50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &563715557
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563715551}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b78ff8f8ef42fc548a7593cf5ec59d46, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &601568257
 GameObject:
   m_ObjectHideFlags: 0
@@ -9872,6 +9851,7 @@ GameObject:
   - component: {fileID: 837603430}
   - component: {fileID: 837603432}
   - component: {fileID: 837603433}
+  - component: {fileID: 837603434}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9951,6 +9931,7 @@ MonoBehaviour:
   song: {fileID: 92743947}
   gameOverScreen: {fileID: 74213628}
   gameWinScreen: {fileID: 0}
+  enemies: []
   sceneIndex: 1
   objectsToHide:
   - {fileID: 156141161}
@@ -9962,7 +9943,21 @@ MonoBehaviour:
   - {fileID: 1927837571}
   textPointsGame: {fileID: 958605217}
   textPoints: {fileID: 470562508}
-  textLife: {fileID: 0}
+  textLife: {fileID: 601568258}
+  quitting: 0
+  pauseMenu: {fileID: 837603432}
+--- !u!114 &837603434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837603429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c184dc21d47b44f91ec08ff0da46c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &867203600
 GameObject:
   m_ObjectHideFlags: 0
@@ -12730,18 +12725,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 851393145245765521, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 851393145245765521, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 851393145245765521, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 851393145245765521, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -12785,49 +12768,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObjPlayerPrototype
       objectReference: {fileID: 0}
-    - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_Size.x
-      value: 0.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_Size.y
-      value: 0.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6245788965085962260, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: life
-      value: 10
-      objectReference: {fileID: 0}
+      propertyPath: gameOver
+      value: 
+      objectReference: {fileID: 837603433}
     - target: {fileID: 6245788965085962260, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 837603430}
-    - target: {fileID: 7391681621124053129, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1072583480, guid: 0496a2686e0f7254a8934ff830ccf767, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5188791519916265151, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2375793308030943081, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 563715557}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
 --- !u!58 &2021190049113363764
 CircleCollider2D:

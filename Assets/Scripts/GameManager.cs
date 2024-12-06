@@ -29,6 +29,8 @@ public class GameManager : Singleton<GameManager>
         textPoints.text = "0";
 
         textLife.text = "10";
+
+        player.isDestroyed = false;
     }
 
     public void UpdatePoints()

@@ -64,16 +64,21 @@ public class EnemyScript : MonoBehaviour
 
     public void MoveToPlayer()
     {
-        if(_tween != null)
+        if(this.gameObject.transform != null && _tween.IsActive())
         {
-            _tween.Kill();
+            _tween?.Kill(); 
         }
 
-        if(player.activeSelf && this.gameObject.tag != "EnemyLeft")
+        if(_tween == null || !_tween.IsActive())
         {
-            _tween = transform.DOMove(new Vector3(0f,0f,0f), duration / 2);
-        }else{
-            _tween = transform.DOMove(new Vector3(1.56f,0.7525349f,0f), duration / 2);
+            _tween?.Kill();
+
+            if(player.activeSelf && this.gameObject.tag != "EnemyLeft")
+            {
+                _tween = transform.DOMove(new Vector3(0f,0f,0f), duration / 2);
+            }else{
+                _tween = transform.DOMove(new Vector3(1.56f,0.7525349f,0f), duration / 2);
+            }
         }
 
         /*if(this.gameObject.CompareTag("EnemyRight"))
@@ -87,7 +92,32 @@ public class EnemyScript : MonoBehaviour
 
     public void Move(string tag)
     {
-        if(tag == "EnemyRight")
+        if(gameObject.transform == null) return;
+
+        //if(_tween?.IsActive() == true) _tween.Kill();
+
+        if(_tween == null || !_tween.IsPlaying())
+        {
+            _tween?.Kill();
+
+            switch (tag)
+            {
+                case "EnemyRight":
+                    _tween = transform.DOMove(new Vector3(3.53f, 0f, 0f), duration).OnKill(() => movingToTarget = false);
+                    break;
+                case "EnemyLeft":
+                    _tween = transform.DOMove(new Vector3(-1.98f, 0.7525349f, 0f), duration).OnKill(() => movingToTarget = false);
+                    break;
+                case "EnemyTop":
+                    _tween = transform.DOMove(new Vector3(0f, 3.53f, 0f), duration).OnKill(() => movingToTarget = false);
+                    break;
+                case "EnemyDown":
+                    _tween = transform.DOMove(new Vector3(0f, -3.53f, 0f), duration).OnKill(() => movingToTarget = false);
+                    break;
+            }
+        }
+
+        /*if(tag == "EnemyRight")
         {
             if(_tween != null)
             {
@@ -95,7 +125,7 @@ public class EnemyScript : MonoBehaviour
             }
 
             _tween = transform.DOMove(new Vector3(3.53f, 0f, 0f), duration).OnKill(() => {movingToTarget = false;});
-            //transform.position = Vector3.Lerp(transform.position, new Vector3(3.53f, 0f, 0f), Time.deltaTime);
+                //transform.position = Vector3.Lerp(transform.position, new Vector3(3.53f, 0f, 0f), Time.deltaTime);
         }else if(tag == "EnemyLeft")
         {
             if(_tween != null)
@@ -120,15 +150,14 @@ public class EnemyScript : MonoBehaviour
             }
 
             _tween = transform.DOMove(new Vector3(0f, -3.53f, 0f), duration).OnKill(() => {movingToTarget = false;});
-        }
+        }*/
     }
 
     void OnDestroy()
     {
-        if(_tween != null)
-        {
-            _tween.Kill();
-        }
+        _tween?.Kill();
+
+        DOTween.Kill(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -194,11 +223,6 @@ public class EnemyScript : MonoBehaviour
 
     public void DestroyEnemy()
     {
-        if(_tween != null)
-        {
-            _tween.Kill();
-        }
-        
         //this.gameObject.GetComponent<Animator>().SetTrigger("Dying");
 
         Destroy(this.gameObject/*, timeToDestroy*/);
