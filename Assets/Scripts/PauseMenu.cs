@@ -11,13 +11,17 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject audioPanel; 
 
+    [SerializeField] private GameObject controlsScreen; 
+
     [SerializeField] private AudioSource backgroundMusic;
 
-
+    [SerializeField] private GameObject[] buttonsToHide;
 
     [SerializeField] private GameObject[] objectsToHide;
 
+
     public int songNumber = 0;
+
 
     public bool isPaused = false;
 
@@ -26,11 +30,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
-            {
-                Resume();
-            }
-            else
+            if (!isPaused)
+           
             {
                 Pause();
             }
@@ -42,8 +43,10 @@ public class PauseMenu : MonoBehaviour
         foreach (GameObject obj in objectsToHide)
         {
             obj.SetActive(true);
-        }
-        
+        }  
+
+       
+
         pauseMenuUI.SetActive(false); 
         Time.timeScale = 1f;
 
@@ -62,7 +65,7 @@ public class PauseMenu : MonoBehaviour
         foreach (GameObject obj in objectsToHide)
         {
             obj.SetActive(false);
-        }
+        }  
 
         pauseMenuUI.SetActive(true); 
         Time.timeScale = 0f; // Pausa o jogo
@@ -86,15 +89,39 @@ public class PauseMenu : MonoBehaviour
     public void OpenAudioScreen()
     {
         audioPanel.SetActive(true);
+
+        foreach(GameObject button in buttonsToHide){
+            button.SetActive(false);
+        }
     }
 
     public void CloseAudioScreen()
     {
         audioPanel.SetActive(false);
+
+        foreach(GameObject button in buttonsToHide){
+            button.SetActive(!false);
+        }
     }
 
     public bool IsPaused()
     {
         return isPaused; // Retorna o estado atual de pausa
+    }
+
+    public void OpenControlScreen(){
+        controlsScreen.SetActive(true);
+
+        foreach(GameObject button in buttonsToHide){
+            button.SetActive(false);
+        }
+    }
+
+        public void CloseControlScreen(){
+        controlsScreen.SetActive(!true);
+
+        foreach(GameObject button in buttonsToHide){
+            button.SetActive(!false);
+        }
     }
 }
