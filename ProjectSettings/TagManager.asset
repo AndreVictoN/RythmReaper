@@ -11,6 +11,7 @@ TagManager:
   - Song1
   - target
   - Song2
+  - Song3
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,7 @@ TagManager:
     locked: 0
   - name: playerLayer
     uniqueID: 3473495957
+    locked: 0
+  - name: LayerEnemies
+    uniqueID: 1063132431
     locked: 0
