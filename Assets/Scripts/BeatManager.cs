@@ -99,7 +99,7 @@ public class BeatManager : Singleton<BeatManager>
 
             foreach(double d in beatTime)
             {
-                if(_audioSource.time > (d - 0.1) - 0.5 && _audioSource.time < (d + 0.1) - 0.5)
+                if(_audioSource.time > (d - 0.1) - 0.6 && _audioSource.time < (d + 0.1) - 0.6)
                 {
                     if(timer <= 0f)
                     {
@@ -198,7 +198,7 @@ public class BeatManager : Singleton<BeatManager>
 
             foreach(double d in beatTime)
             {
-                if(_audioSource.time > (d - 0.1) - 0.4 && _audioSource.time < (d + 0.1) - 0.4)
+                if(_audioSource.time > (d - 0.1) - 0.5 && _audioSource.time < (d + 0.1) - 0.5)
                 {
                     if(timer <= 0f)
                     {

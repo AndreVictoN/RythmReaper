@@ -31,7 +31,6 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused)
-           
             {
                 Pause();
             }
@@ -44,9 +43,7 @@ public class PauseMenu : MonoBehaviour
         {
             obj.SetActive(true);
         }  
-
-       
-
+        
         pauseMenuUI.SetActive(false); 
         Time.timeScale = 1f;
 

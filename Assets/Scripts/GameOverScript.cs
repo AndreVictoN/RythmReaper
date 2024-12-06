@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
-
     public PlayerScript player;
 
     public GameObject playerObject;
@@ -29,11 +28,16 @@ public class GameOverScript : MonoBehaviour
     public TextMeshProUGUI textLife;
 
     public TextMeshProUGUI textLifeGame;
-    public TextMeshProUGUI gradeText; 
+    public TextMeshProUGUI gradeText;
+
+    public bool quitting = false;
+
+    public PauseMenu pauseMenu;
 
     void Start()
     {
         enemies = FindObjectsOfType<EnemyScript>();
+        quitting = false;
     }
 
     void Update()
@@ -54,7 +58,7 @@ public class GameOverScript : MonoBehaviour
             EndGame();
         }
 
-        if ((!song._audioSource.isPlaying && player.life > 0 && !pause.isPaused) || Input.GetKeyDown(KeyCode.L))
+        if (!song._audioSource.isPlaying && player.life > 0 && !pause.isPaused/*) || Input.GetKeyDown(KeyCode.L)*/)
         {
             WinGame();
         }
@@ -66,8 +70,6 @@ public class GameOverScript : MonoBehaviour
         {
             finalPoints.text = textPointsGame.text;
         }
-
-        textLife.text = textLifeGame.text;
 
         enemies = FindObjectsOfType<EnemyScript>();
 
@@ -83,7 +85,13 @@ public class GameOverScript : MonoBehaviour
             enemy.gameObject.SetActive(false);
         }
 
-        gameOverScreen.SetActive(true);
+        if(!quitting)
+        {
+            gameOverScreen.SetActive(true);
+        }else
+        {
+            MainMenuButton();
+        }
     }
 
     void WinGame()
@@ -149,9 +157,22 @@ public class GameOverScript : MonoBehaviour
         return false;
     }
 
-    public void MainMenuButton()
-    {
-        SceneManager.LoadScene(0);
+    public void MainMenuButton(){
+        if(player != null)
+        {
+            player.gameObject.SetActive(true);
+            player.life = 0;
+
+            Time.timeScale = 1f;
+
+            pauseMenu.isPaused = false;
+
+            quitting = true;
+        }else if(player == null)
+        {
+            quitting = false;
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void ResetButton()

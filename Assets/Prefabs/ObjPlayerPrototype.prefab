@@ -134,6 +134,8 @@ MonoBehaviour:
   timer: 0
   life: 10
   isDestroyed: 0
+  src: {fileID: 0}
+  sfxH: {fileID: 8300000, guid: ce20d372e58d2844cb35e354832bb3a4, type: 3}
 --- !u!61 &5770294522779936639
 BoxCollider2D:
   m_ObjectHideFlags: 0

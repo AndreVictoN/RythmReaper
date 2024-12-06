@@ -174,6 +174,7 @@ public class EnemyScript : MonoBehaviour
                 }else if(this.gameObject.transform.position.x < 3.41f)
                 {
                     collision.gameObject.GetComponent<PlayerScript>().Damage();
+                    collision.gameObject.GetComponent<PlayerScript>().PlayHitSFX();
                     Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
                 }
             }else if(this.gameObject.tag == "EnemyLeft")
@@ -186,6 +187,7 @@ public class EnemyScript : MonoBehaviour
                 }else if(this.gameObject.transform.position.x > -1.32f)
                 {
                     collision.gameObject.GetComponent<PlayerScript>().Damage();
+                    collision.gameObject.GetComponent<PlayerScript>().PlayHitSFX();
                     Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
                 }
             }else if(this.gameObject.tag == "EnemyTop")
@@ -198,6 +200,7 @@ public class EnemyScript : MonoBehaviour
                 }else if(this.gameObject.transform.position.y < 3.41f)
                 {
                     collision.gameObject.GetComponent<PlayerScript>().Damage();
+                    collision.gameObject.GetComponent<PlayerScript>().PlayHitSFX();
                     Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
                 }
             }else if(this.gameObject.tag == "EnemyDown")
@@ -210,6 +213,7 @@ public class EnemyScript : MonoBehaviour
                 }else if(this.gameObject.transform.position.y > -3.41f)
                 {
                     collision.gameObject.GetComponent<PlayerScript>().Damage();
+                    collision.gameObject.GetComponent<PlayerScript>().PlayHitSFX();
                     Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<BoxCollider2D>());
                 }
             }
