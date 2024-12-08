@@ -44,7 +44,7 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        src.volume = PlayerPrefs.GetFloat("Volume", 1f);
+        src.volume = PlayerPrefs.GetFloat("Volume", 1f) + 0.5f;
 
         upKey = LoadKey("UpKey", KeyCode.W);
         downKey = LoadKey("DownKey", KeyCode.S);
@@ -82,26 +82,32 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown(upKey) && timer <= 0 && !isDestroyed)
         {
-            this.gameObject.GetComponent<Animator>().SetTrigger("Attack");
+            this.gameObject.GetComponent<Animator>().SetTrigger("AttckUD");
             StartMove(new Vector3(0f, 3.53f, 0f));
+            this.gameObject.transform.localScale = new Vector3(4.3f, -4.3f, 4.3f);
             timer = 0.05f;
+            Invoke("CorrectScale", 0.3f);
         }
         else if (Input.GetKeyDown(downKey) && timer <= 0 && !isDestroyed)
         {
-            this.gameObject.GetComponent<Animator>().SetTrigger("Attack");
+            CorrectScale();
+            this.gameObject.transform.localScale = new Vector3(4.3f, 4.3f, 4.3f);
+            this.gameObject.GetComponent<Animator>().SetTrigger("AttckUD");
             StartMove(new Vector3(0f, -3.53f, 0f));
             timer = 0.05f;
         }
         else if (Input.GetKeyDown(rightKey) && timer <= 0 && !isDestroyed)
         {
-            this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+            CorrectScale();
+            this.gameObject.transform.localScale = new Vector3(4.3f, 4.3f, 4.3f);
             this.gameObject.GetComponent<Animator>().SetTrigger("Attack");
             StartMove(new Vector3(3.53f, 0f, 0f));
             timer = 0.05f;
         }
         else if (Input.GetKeyDown(leftKey) && timer <= 0 && !isDestroyed)
         {
-            this.gameObject.transform.localScale = new Vector3(-2.5f, 2.5f, 2.5f);
+            CorrectScale();
+            this.gameObject.transform.localScale = new Vector3(-4.3f, 4.3f, 4.3f);
             this.gameObject.GetComponent<Animator>().SetTrigger("Attack");
             StartMove(new Vector3(-3.53f, 0f, 0f));
             timer = 0.05f;
@@ -155,5 +161,10 @@ public class PlayerScript : MonoBehaviour
         src.clip = sfxH;
 
         src.Play();
+    }
+
+    public void CorrectScale()
+    {
+        this.gameObject.transform.localScale = new Vector3(4.3f, 4.3f, 4.3f);
     }
 }

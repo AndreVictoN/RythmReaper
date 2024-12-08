@@ -1932,10 +1932,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -10094,7 +10094,7 @@ MonoBehaviour:
   gameOverScreen: {fileID: 1574139181}
   gameWinScreen: {fileID: 1877631178}
   pause: {fileID: 837603432}
-  sceneIndex: 1
+  sceneIndex: 2
   objectsToHide:
   - {fileID: 156141161}
   - {fileID: 601568257}
@@ -15178,24 +15178,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 851393145245765521, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 851393145245765521, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 851393145245765521, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 851393145245765521, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 851393145245765521, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 851393145245765521, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15239,11 +15227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: m_Size.x
-      value: 0.83
+      value: 0.3354085
       objectReference: {fileID: 0}
     - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: m_Size.y
-      value: 0.59
+      value: 0.464243
       objectReference: {fileID: 0}
     - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: m_Enabled
@@ -15251,15 +15239,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: m_Offset.x
-      value: 0
+      value: 0.009511374
       objectReference: {fileID: 0}
     - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: m_Offset.y
-      value: -0.01
+      value: -0.03949085
       objectReference: {fileID: 0}
     - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770294522779936639, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 6245788965085962260, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
       propertyPath: src
@@ -15273,10 +15269,6 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 837603430}
-    - target: {fileID: 7391681621124053129, guid: 2798376cbf4e54747aa1a167e401adb6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1072583480, guid: 0496a2686e0f7254a8934ff830ccf767, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

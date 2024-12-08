@@ -171,7 +171,7 @@ public class GameOverScript : MonoBehaviour
         }else if(player == null)
         {
             quitting = false;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
 
