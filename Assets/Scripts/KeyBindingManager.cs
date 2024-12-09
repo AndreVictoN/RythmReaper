@@ -20,10 +20,10 @@ public class KeyBindingManager : MonoBehaviour
     void Start()
     {
 
-        upKey = LoadKey("UpKey", KeyCode.W);
-        downKey = LoadKey("DownKey", KeyCode.S);
-        rightKey = LoadKey("RightKey", KeyCode.D);
-        leftKey = LoadKey("LeftKey", KeyCode.A);
+        upKey = LoadKey("UpKey", KeyCode.UpArrow);
+        downKey = LoadKey("DownKey", KeyCode.DownArrow);
+        rightKey = LoadKey("RightKey", KeyCode.RightArrow);
+        leftKey = LoadKey("LeftKey", KeyCode.LeftArrow);
 
   
         UpdateButtonTexts();

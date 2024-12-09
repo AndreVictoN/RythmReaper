@@ -57,7 +57,7 @@ public class PauseMenu : MonoBehaviour
         }
 
         isPaused = false;
-        audioPanel.SetActive(false);
+        //audioPanel.SetActive(false);
     }
 
     public void Pause()
