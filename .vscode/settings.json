@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "RythmGameMeta.sln"
+    "dotnet.defaultSolution": "Swords Dance.sln"
 }
