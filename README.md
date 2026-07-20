@@ -5,26 +5,30 @@
 
 > A 2D rhythm game developed in Unity for the 33rd META (CEFET-MG, 2024), where players must synchronize their actions with the beat of the music.
 
-[Gameplay GIF]
-
 ---
 
 ## 🎮 Gameplay
 
 RythmReaper is a rhythm game in which the player must attack enemies according to the music's beat. Missing enemies reduces the player's HP, while accurate timing increases the score and allows better final grades.
 
-The project was developed to explore Unity's tools for game development.
+The project was developed to explore Unity's tools for game development
+
+<img src="ReadmeGifs/lore.gif" width="50%" alt="Lore">
+<img src="ReadmeGifs/songs.gif" width="50%" alt="Songs">
+<img src="ReadmeGifs/gameplay.gif" width="50%" alt="Gameplay">
+
+🎥 **Watch the full gameplay here:** https://youtu.be/QptZydXXbzA?si=_Sf0pVOcKQrtRVZh
 
 ---
 
 ## ✨ Features
 
 - Beat-synchronized gameplay
-- Animated enemies
+- Animations
+- Key Binding
 - Score system
 - Health system
 - Multiple songs
-- Animated menus
 - End game screens
 - Pixel art
 
