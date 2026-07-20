@@ -3,7 +3,7 @@
   RythmReaper
 </h1>
 
-> A 2D rhythm game developed in Unity for the 33rd META (CEFET-MG, 2024), where players must synchronize their actions with the beat of the music.
+> A 2D rhythm game developed in Unity for the 33rd META (CEFET-MG, 2024), where players fight enemies by attacking in sync with the beat.
 
 ---
 
@@ -12,6 +12,10 @@
 RythmReaper is a rhythm game in which the player must attack enemies according to the music's beat. Missing enemies reduces the player's HP, while accurate timing increases the score and allows better final grades.
 
 The project was developed to explore Unity's tools for game development.
+
+---
+
+## 📺 Videos
 
 <img src="ReadmeGifs/lore.gif" width="50%" alt="Lore">
 <img src="ReadmeGifs/songs.gif" width="50%" alt="Songs">
@@ -24,13 +28,12 @@ The project was developed to explore Unity's tools for game development.
 ## ✨ Features
 
 - Beat-synchronized gameplay
-- Animations
 - Key Binding
 - Score system
 - Health system
 - Multiple songs
 - End game screens
-- Pixel art
+- Pixel art Animations
 
 ---
 
@@ -41,12 +44,6 @@ The project was developed to explore Unity's tools for game development.
 - DOTween
 - Cinemachine
 - TextMeshPro
-
----
-
-## 📸 Screenshots
-
-(images)
 
 ---
 
@@ -80,6 +77,15 @@ To achieve this, we studied rhythm games such as Friday Night Funkin' and Muse D
 - Team collaboration
 - Game architecture
 - UI development
+
+---
+
+## 🎨 Credits
+
+- dungeonOld_ by Kevin's Mom's House (https://kevins-moms-house.itch.io/dungeonold)
+- Bringer Of Death (Free) by Clembod (https://clembod.itch.io/bringer-of-death-free)
+- Free Orc Pixel Characters Sprites by craftpix.net (https://free-game-assets.itch.io/free-top-down-orc-game-character-pixel-art)
+- Mattz Art (https://xzany.itch.io/)
 
 ---
 
