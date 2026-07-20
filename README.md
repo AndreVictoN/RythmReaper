@@ -11,7 +11,7 @@
 
 RythmReaper is a rhythm game in which the player must attack enemies according to the music's beat. Missing enemies reduces the player's HP, while accurate timing increases the score and allows better final grades.
 
-The project was developed to explore Unity's tools for game development
+The project was developed to explore Unity's tools for game development.
 
 <img src="ReadmeGifs/lore.gif" width="50%" alt="Lore">
 <img src="ReadmeGifs/songs.gif" width="50%" alt="Songs">
